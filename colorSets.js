@@ -1,8 +1,12 @@
-let generateColor = function(iFactor, colorSet)  {
+let generateColor = function(colorSet, iFactor, iterations = null)  {
 
+  //============== GRAY SCALE
+
+  if (colorSet == "grayScale")  {
+    return [255*(1-iFactor), 255*(1-iFactor), 255*(1-iFactor)];
+  }
 
   //============== FIRST BLUE
-
 
   if (colorSet == "blueFirst")  {
     let white = 255 * (1 - iFactor);
@@ -14,9 +18,7 @@ let generateColor = function(iFactor, colorSet)  {
     return [white - blue, white - blue - red, white - red];
   }
 
-
   //============== SATURATION COLOR FULL
-
 
   else if (colorSet == "saturationColorFull")  {
     if (iFactor > 0.999999)  {
@@ -25,7 +27,6 @@ let generateColor = function(iFactor, colorSet)  {
     h = 360 * iFactor;
     return hslToRgb(h, 1, 0.5);
   }
-
 
   //=============== CUSTOM GRADIENTS
 
@@ -41,7 +42,7 @@ let generateColor = function(iFactor, colorSet)  {
     if (iFactor > 0.9999999999999)  {
       return [0, 0, 0];
     }
-    return customGradient2.getColor(iFactor);
+    return customGradient2.getColor(iterations);
   }
 }
 
@@ -57,13 +58,13 @@ let customGradient1 = new Gradient({
 
 let customGradient2 = new Gradient({
   0: [255, 255, 255],
-  0.10: [138, 143, 248],
-  0.185: [10, 13, 144],
-  0.205: [0, 0, 2],
-  0.23: [10, 10, 150],
-  0.29: [90, 90, 200],
-  0.38: [255, 255, 255],
-  0.4: [240, 220, 255],
-  0.5: [25, 14, 80],
-  1: [0, 0, 0]
+  45: [138, 143, 248],  //Light blue
+  90: [0, 0, 170],   //Darker blue
+  98: [0, 0, 2],       //Black
+  115: [10, 10, 150],    //Darker blue
+  155: [90, 90, 200],    //Light blue
+  190: [255, 255, 255],  //White
+  372: [30, 10, 140],   //Purple
+  390: [18, 9, 80],      //Dark purple rgb(21, 6, 91)
+  600: [0, 0, 0]
 });

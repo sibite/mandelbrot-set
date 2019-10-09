@@ -34,7 +34,7 @@ let Gradient = function(points)  {
   this.points.sort((a, b) => a[0] - b[0])
 
   this.getColor = function(point)  {
-    point = Math.min(Math.max(0, point), 1);
+    point = Math.min(Math.max(this.points[0][0], point), this.points[this.points.length - 1][0]);
 
     let leftIndex = this.points.findIndex((p, key, arr) => arr[key][0] <= point && arr[key + 1][0] >= point);
     let lPoint = this.points[leftIndex],
