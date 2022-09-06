@@ -129,10 +129,8 @@ document.body.addEventListener("mousemove", function(event)  {
   }
 });
 
-
 document.body.addEventListener("touchmove", function(event)  {
   if (event.target == canvas.el || event.target == gui.container)  {
-    console.log(event);
     event.preventDefault();
     if (event.touches.length == 2)  {
       newPinchLen = Math.sqrt(
@@ -148,8 +146,10 @@ document.body.addEventListener("touchmove", function(event)  {
   }
 });
 
+let touchCount = 0;
 
 document.body.addEventListener("touchstart", function(event) {
+  touchCount += event.changedTouches.length;
   if (event.target == canvas.el || event.target == gui.container)  {
     if (event.touches.length == 2)  {
       pinchLen = Math.sqrt(
@@ -158,12 +158,15 @@ document.body.addEventListener("touchstart", function(event) {
       );
       tempZoom = zoomer.zoom;
     }
-    else if (event.touches.length == 3)  {
+    else if (touchCount == 3)  {
       switchFullscreen();
     }
   }
 });
 
+document.body.addEventListener("touchend", function(event) {
+  touchCount -= event.changedTouches.length;
+});
 
 document.body.addEventListener("wheel", function(event)  {
   if (event.target == canvas.el || event.target == gui.container)  {
@@ -231,28 +234,18 @@ function switchFullscreen() {
   }
 }
 
-gradientImg = new Frame(canvas.width, 20);
+/*gradientImg = new Frame(canvas.width, 20);
 for (x = 0; x < canvas.width; x++)  {
   point = x / (canvas.width - 1) * customGradient2.points[customGradient2.points.length - 1][0];
   color = customGradient2.getColor(point);
   for (y = 0; y < 20; y++)  {
     gradientImg.setPixel(x, y, color);
   }
-}
+}*/
 
 function putGradient()  {
   //canvas.ctx.putImageData(gradientImg.imageData, 0, 0);
 }
 
 
-/*
-mandelbrot.zoom = 34676135;
-mandelbrot.center = {x: -1.7697313030574018, y: -0.004836938320806419};
-
-mandelbrot.zoom = 36124794453853;
-mandelbrot.center = {x: -1.7697313256040599, y: -0.0048369252286405};
-
-mandelbrot.zoom = 254263;
-mandelbrot.center = {x: -1.7693831, y: -0.004235265};
-*/
 mandelbrot.drawSet();

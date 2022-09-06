@@ -24,6 +24,7 @@ let Mandelbrot = function(canvas)  {
   this.center = {x: -0.25, y: 0};
   this.zoom = 0.5;
   this.colorSet = "customGradient2";
+  this.baseIterations = 300;
 
   this.getGridCoords = function(x, y) {
     x = (x - this.canvas.width / 2) / this.oneUnit + this.center.x;
@@ -58,7 +59,7 @@ let Mandelbrot = function(canvas)  {
 
   this.drawSet = function()  {
     console.log("Zoom: "+this.zoom+"x");
-    let iterations = Math.floor(300 * Math.pow(this.zoom*this.oneUnit, 1/50));
+    let iterations = Math.floor(this.baseIterations * Math.pow(this.zoom*this.oneUnit, 1/50));
     this.frame = new Frame(this.canvas.width, this.canvas.height);
     for (x = 0; x < this.canvas.width; x++)  {
       for (y = 0; y < this.canvas.height; y++)  {

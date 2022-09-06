@@ -39,7 +39,7 @@ let generateColor = function(colorSet, iFactor, iterations = null)  {
 
 
   else if (colorSet == "customGradient2")  {
-    if (iFactor > 0.9999999999999)  {
+    if (iFactor > 0.9999999999999999)  {
       return [0, 0, 0];
     }
     return customGradient2.getColor(iterations);
@@ -58,13 +58,17 @@ let customGradient1 = new Gradient({
 
 let customGradient2 = new Gradient({
   0: [255, 255, 255],
-  45: [138, 143, 248],  //Light blue
-  90: [0, 0, 170],   //Darker blue
-  98: [0, 0, 2],       //Black
-  115: [10, 10, 150],    //Darker blue
-  155: [90, 90, 200],    //Light blue
-  190: [255, 255, 255],  //White
-  372: [30, 10, 140],   //Purple
-  390: [18, 9, 80],      //Dark purple rgb(21, 6, 91)
-  600: [0, 0, 0]
+  90: [10, 10, 150],   //Darker blue
+  100: [0, 0, 0],       //Black
+  110: [10, 10, 150],    //Darker blue
+  200: [255, 255, 255],  //White
+  390: [30, 10, 140],   //Purple
+  400: [0, 0, 0],       //Black
+  410: [30, 10, 140],   //Purple
+  500: [255, 255, 255], //white
+  690: [160, 30, 200],  //Purple-pink
+  700: [0, 0, 0],
+  710: [160, 30, 200],
+  800: [255, 255, 255],
+  1000: [0, 0, 0]
 });

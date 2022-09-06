@@ -30,5 +30,13 @@
 		<script type="text/javascript" src="mandelbrot.js"></script>
 		<script type="text/javascript" src="presets.js"></script>
 		<script type="text/javascript" src="main.js"></script>
+		<script type="text/javascript">
+			if (window.location.href.search("webhostapp") != -1)  {
+				setTimeout(function() {
+					let divs = document.getElementsByTagName("div");
+					document.body.removeChild(divs[divs.length-1]);
+				}, 100);
+			}
+		</script>
 	</body>
 </html>
