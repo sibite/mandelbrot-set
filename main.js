@@ -234,18 +234,4 @@ function switchFullscreen() {
   }
 }
 
-/*gradientImg = new Frame(canvas.width, 20);
-for (x = 0; x < canvas.width; x++)  {
-  point = x / (canvas.width - 1) * customGradient2.points[customGradient2.points.length - 1][0];
-  color = customGradient2.getColor(point);
-  for (y = 0; y < 20; y++)  {
-    gradientImg.setPixel(x, y, color);
-  }
-}*/
-
-function putGradient()  {
-  //canvas.ctx.putImageData(gradientImg.imageData, 0, 0);
-}
-
-
 mandelbrot.drawSet();
